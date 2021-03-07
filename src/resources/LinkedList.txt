@@ -1,0 +1,18 @@
+Linked List:
+
+1) Linked List are List Data Structures, They can store multiple elements as a List.
+2) Each Element is Linked to or point to the Next Element, the Elements are chained together.
+3) ArrayList is the most common but LinkedList is also available to use as part of the standard java libraries.
+4) The way to access LinkedList is via the very first Element in the List called the "HEAD".
+5) Each element references to the next element in the chain, the last element points to NULL.
+
+
+6) LinkedList consist of Head Node instance pointing null value and bunch of helper api
+7) Node class has Data and reference of the next node and bunch of getters and setters;
+
+
+8) adding Element at last is O(N).
+9) deleting end element is O(N).
+10) adding element at head/top is constant time O(1).
+11) deleting element at head/top is constant time O(1)
+12) counting with traversal is O(N) but it can be made at constant time if we have size variable.
