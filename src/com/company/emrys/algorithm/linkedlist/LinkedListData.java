@@ -1,17 +1,17 @@
 package com.company.emrys.algorithm.linkedlist;
 
-public class LinkedList<T extends Comparable> {
+public class LinkedListData<T extends Comparable> {
 
     private Node<T> head;
     private int size;
 
-    public LinkedList() {
+    public LinkedListData() {
         this.head = null;
         this.size = 0;
     }
 
-    //Add node at the end of the LinkedList
-    public void add(Node<T> node){
+    //Add node at the end of the LinkedListData
+    public void add(Node node){
         if(head !=null){
            Node<T> currentHead = this.head;
 
@@ -26,12 +26,12 @@ public class LinkedList<T extends Comparable> {
         }
     }
 
-    //get the size of  LinkedList
+    //get the size of  LinkedListData
     public int getSize(){
         return size;
     }
 
-//    get the size of LinkedList using traversal
+//    get the size of LinkedListData using traversal
     public int getElementCount(){
         if(head==null)
         {
@@ -50,14 +50,14 @@ public class LinkedList<T extends Comparable> {
             return size;
         }
     }
-//add node to LinkedList head
+//add node to LinkedListData head
     public void addHead(Node<T> node){
         Node<T> temp = head.getNext();
         head=node;
         head.setNext(temp);
     }
 
-//    return all data in LinkedList
+//    return all data in LinkedListData
     @Override
     public String toString() {
 
@@ -92,6 +92,7 @@ public class LinkedList<T extends Comparable> {
             Node<T> temp = head.getNext();
             node.setNext(temp);
             head = node;
+            size++;
             return true;
         }else{
             int i = 0;
@@ -103,13 +104,16 @@ public class LinkedList<T extends Comparable> {
             Node<T> node = current.getNext();
             current.setNext(new Node<>(data));
             current.getNext().setNext(node);
+            size++;
             return true;
         }
     }
 
-//    delete LinkedList
+//    delete LinkedListData
     public void deleteAll(){
         head = null;
+        size=0;
+
     }
 
 // check if the date or element contains in the Linked List and return the index if present else -1
@@ -147,6 +151,7 @@ public class LinkedList<T extends Comparable> {
                 index++;
             }
             current.setNext(current.getNext().getNext());
+            size--;
         }
 
     }

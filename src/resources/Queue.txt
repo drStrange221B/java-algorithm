@@ -1,0 +1,22 @@
+The Queue
+A Queue is a data structure where elements are added to the end of the queue and removed from the beginning
+of the Queue. FIFO (Fist In First Out)
+
+Operations on a Queue are performed at two ends, Removal is at the beginning and addition is at the End of
+the queue
+
+Enqueue(): Adding a new element to the end of the queue
+Dequeue(): Removing an element from the beginning of the Queue.
+Peek(): view the element at the beginning of the Queue.
+
+Offer(): Adds to a Queue is space is available, it basically avoids the exception of not having enough space.
+
+
+APIs
+1) enqueue(): add element
+2) dequeue(): remove element
+3) peek(): view element
+4) isEmpty(): checks if queue is empty
+5) isFull(): checks if queue is full
+6) Offer(): add element if queue has enough space
+

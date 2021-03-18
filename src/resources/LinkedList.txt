@@ -16,3 +16,36 @@ Linked List:
 10) adding element at head/top is constant time O(1).
 11) deleting element at head/top is constant time O(1)
 12) counting with traversal is O(N) but it can be made at constant time if we have size variable.
+
+
+Contrast
+
+            Linked List                                                                                             Array
+
+1) List sizes are unlimited, no need to know up front how many elements       1) size are declared up front with the number of Elements it can hold
+   will be added to the linked list. size grows Dynamically.                     Size cannot grow dynamically.
+
+2) Inserting a new element is easily done by reassigning the next pointer     2) Arrays are located in contiguous memory location, inorder to insert
+   Not much else needs to be done.                                               an element, the element to its right have to move over to make room for it
+                                                                                 its is a more heavyweight operation.
+
+3) Deleting element is very easy and efficient                                3) Array Elements have to be moved in the case of deletion as well.
+
+4) Random access to an element at a specific index in the Linked List is      4) Arrays can perform random access at constant time O(1). since element
+   costly as the entire list up-to that element has to be Traversed. O(N)        are stored in contiguous memory locations, element exact location is known.
+
+5) Memory could be costly as each element required additional space to hold   5) no pointers are involved as all element's location are known.
+   the pointer that points to next element.
+
+6) Cannot take advantage of spatial locality (for caching) when accessing     6) As elements are in contiguous memory locations access to arrays takes
+   the elements. Each Element can live pretty much anywhere in memory and        significant advantage of spatial locality in caches. this can be a
+   be pointed to.                                                                significant performance improvement.
+
+
+
+WHEN TO USE LINKED LISTS:
+1) when there is requirement of inserting and deleting a large of elements
+2) when the number of element is unknown.
+
+WHEN TO USE ARRAYS:
+1) for frequent read of element, usually random access more frequently. Random access is O(1) i.e Constant time.

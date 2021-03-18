@@ -1,0 +1,42 @@
+The Stack:
+1) A stack is a data structure to hold elements such that the last element that get added will be the access
+   first. Also called LIFO (Last In First Out).
+2) Major Operation that is performed on the stack are always focused on one end of the stack. called top.
+
+Push: Adding a new element to the top of the stack. push of an element is always done at the top of the stack
+Pop:  Removing an element from the top of the stack. Pop an element is always done from the top of the stack.
+
+Peek: check the data at the top of the stack without changing the underling data structure.
+
+Important APIs of Stack:
+1) Push(): add an element at the pop of the stack
+2) Pop(): remove an element from the top of the stack
+3) Peek(): check/view the element at the top of the stack without removing is from stack
+4) Isempty(): check if stack is empty
+5) Isfull(): check if stack is full;
+6) size(): return the size of the stack. i.e how many elements are in the stack.
+
+Throw an Exception if pop operation is perform on empty stack and push operation is perform on full stack.
+
+Underlying Data Structure
+ Linked List is the underlying data structure as the most common operation on a stack involves pushing and
+ popping elements from the top and the operations are confined to one end of the stack.
+
+ Linked List serves this purpose perfectly.
+
+
+PERFORMANCE AND COMPLEXITY
+push(): O(1)
+pop(): o(1)
+isEmpty(): O(1) - as we have introduce size variable - if has not it will be O(N) by traversal
+isFull(): O(1)  - as we have introduce size variable - if has not it will be O(N) by traversal
+size(): O(1) - as we have introduce size variable - if has not it will be O(N) by traversal
+
+
+Real World Implementation of Stack
+1) use to perform Undo in any application
+2) Implementing the back button on the web browser
+3) Holding the memory for recursive calls in a programming language
+4) Translating infix notation for expressions to postfix
+
+

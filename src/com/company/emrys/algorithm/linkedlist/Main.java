@@ -1,12 +1,12 @@
 package com.company.emrys.algorithm.linkedlist;
 
-import javax.sound.midi.Soundbank;
+import java.io.FileNotFoundException;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
 
-       LinkedList<Integer> linkedList = new LinkedList<>();
+       LinkedListData<Integer> linkedList = new LinkedListData<>();
        linkedList.add( new Node(5));
         linkedList.add( new Node(5));
         linkedList.add( new Node(6));
@@ -25,5 +25,10 @@ public class Main {
 
         linkedList.deleteNth(2);
         System.out.println(linkedList.toString());
+
+
+        System.out.println(13%10);
+
+
     }
 }
