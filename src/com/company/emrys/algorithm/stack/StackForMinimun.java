@@ -15,8 +15,8 @@ public class StackForMinimun<T extends Comparable> {
 
         if(!stackValue.isEmpty()){
 
-            if(stackValue.peek().compareTo(data) <0){
-                min = stackValue.peek();
+            if(min.compareTo(minStack.peek())>0){
+                min = minStack.peek();
             }
         }
 
