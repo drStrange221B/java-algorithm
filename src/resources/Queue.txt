@@ -20,3 +20,6 @@ APIs
 5) isFull(): checks if queue is full
 6) Offer(): add element if queue has enough space
 
+The Queue - Underlying Data Structure
+The most common operations on a Queue involve enqueuing and Dequeuing Elements. The operations on both ends of the Queue
+Linked List with pointer to head and the tail works well.
