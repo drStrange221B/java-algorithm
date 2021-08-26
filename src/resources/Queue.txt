@@ -23,3 +23,103 @@ APIs
 The Queue - Underlying Data Structure
 The most common operations on a Queue involve enqueuing and Dequeuing Elements. The operations on both ends of the Queue
 Linked List with pointer to head and the tail works well.
+
+
+                                        Where can a Queue be used
+
+- Customer Service Hot line, calls are assigned to representatives in the order that they are received
+- Printing job
+- Any Order Processing system like in E-Commerce website or Bank Transaction systems
+
+
+                                   IMPLEMENTING A QUEUE USING TWO STACKS
+ 1) FORWARD STACK: Use Forward Stack to push or enqueue elements. Enqueue operations are always performed
+   on the forward stack.
+ 2) REVERSED STACK: Reversed Stack holds the elements in reverse order from the Forward Stack. Use only for
+    Dequeue operation.
+
+ pop element from one stack and push elements to another stack to get interchanged value in between stacks
+
+ Enqueue requires moving all elements to the forward stack and pushing the last element in i.e the top
+
+ Dequeue requires moving all elements to the reverse stack and popping the last element in i.e the top
+
+
+Set up the queue implementation with two stacks
+
+public class QueueBuildWithTwoStack<T> {  // set up the two stacks 1) Forward Stack 2) Reversed Stack
+
+    private Stack<T> forwardStack = new Stack<>();
+    private Stack<T> reversedStack = new Stack<>();
+
+    public QueueBuildWithTwoStack(){
+
+    }
+
+}
+
+isFull() and isEmpty() delegates to the individual stacks
+
+public boolean isFull(){                                        // Either stack could hold all the elements,
+    return forwardStack.isFull() || reversedStack.isFull();     // if either is full the queue is full
+}
+
+public boolean isEmpty(){
+    return forwardStack.isEmpty() && reversedStack.isEmpty();  // If both stacks are empty no elements has been
+}                                                              // added to the queue
+
+Enqueue:
+
+public void enqueue(T data) throws Queue.QueueOverFlowException{
+
+    if(isFull()){                                    // Sanity Check is the Queue full
+        throw new QueueOverFlowException();
+    }
+
+    try{
+
+     if(forwardStack.isEmpty(){                     // Push all elements from the reverse stack to the forward
+        while(!reverseStack.isEmpty()){             // stack, enqueue always happens on the forward stack
+            forwardStack.push(reverseStack.pop());
+        }
+     }
+       forwardStack.push(data);                     // finally do the enqueue - A push on the forward stack
+    }catch (Stack.StackOverflowException | Stack.StackUnderflowException)
+    {
+        throw new Queue.QueueOverflowException();
+    }
+}
+
+Dequeue:
+
+public T dequeue() throws QueueUnderflowException{
+
+        if(isEmpty()){
+            throw new QueueUnderflowException();
+        }
+
+        try{
+            if(reverseStack.isEmpty(){
+                while(!forwardStack.isEmpty()){
+                    reverseStack.push(forwardStack.pop());
+                }
+            }
+        }catch (Stack.StackOverflowException | Stack.StackUnderflowException)
+         {
+                 throw new Queue.QueueOverflowException();
+         }
+
+         return reverseStack.pop();
+}
+
+
+        Performance and Complexity for Queue using 2 stacks
+
+All enqueues and then all dequeues are O(1) - if only one of these operation are performed
+
+enqueue(): O(M)
+dequeue(): O(M)
+
+Time complexity is O(M) where M is the number of operations we perform on the queue
+
+

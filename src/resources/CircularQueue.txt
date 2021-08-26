@@ -1,0 +1,108 @@
+Circular Queue can be implemented using an array where the last element wraps around to the first element
+
+Initial Assumptions:
+1) Head = -1   -> A special value to denote an empty List
+2) Tail can have any initial value. it always points or holds the last element to the queue.
+3) Head = TAIL is when size of the queue is 1.
+4) Head always points to the first element.
+5) Queue is full when Tail + 1 = Head
+6) There is no guarantee that head is always ahead of tail or tail is always ahead of head
+
+ENQUEUE:
+- for the empty queue i.e for the first entry to the queue. the value of head = tail = 0
+- for subsequent entry the tail index increased till it reach the length of the array and then circles back
+
+DEQUEUE:
+- Head moves one index
+- Once Head reaches length index of the Queue it circles back again
+
+Example:
+
+public class Queue<T>{
+    private static final int SPECIAL_EMPTY_VALUE = -1;
+    private static int MAX_SIZE = 40;
+    private T[] elements;
+
+    // The head index is initialized to a special value which
+    // indicate that the queue is empty
+    private int headIndex = SPECIAL_EMPTY_VALUE;
+    private int tailIndex = SPECIAL_EMPTY_VALUE;
+
+    public Queue(Class<T> clazz) {
+        elements = (T[]) Array.newInstance(class,MAX_SIZE));
+    }
+
+}
+
+Exceptions Thrown
+public static class QueueOverflowException extends Exception{} -> thrown when Enqueuing into a Full Queue
+public static class QueueUnderflowException extends Exception{} -> thrown when Dequeueing from a empty queue
+
+
+- The HeadIndex is always set to the special marker value when the queue is empty
+public boolean isEmpty(){
+    return headIndex = SPECIAL_EMPTY_VALUE;
+}
+
+-The head index and next tail index is equal. i.e the head index and tail index is right next to one another
+public boolean isFull(){
+    int nextIndex = (tailIndex + 1) % elements.length;
+
+    return nextIndex == headIndex;
+}
+
+
+Enqueue
+public void enqueue(T data) throws QueueOverflowException{
+    if(isFull())                // check for a full queue and fail accordingly
+    {
+        throw new QueueOverflowException();
+    }
+
+    tailIndex = (tailIndex + 1)%elements.length;  // get the next tail index and insert the new element there
+    elements[tailIndex] = data;                   // Note that we need to wrap around to the first position if
+                                                  // we're at the end of the circular array
+
+    if(headIndex == SPECIAL_EMPTY_VALUE)
+    {
+        headIndex = tailIndex;
+    }
+
+   // if the head has SPECIAL_EMPTY_VALUE it means the queue was previously empty set it to the same index as
+   tail.
+
+}
+
+
+Dequeue:
+public T dequeue() throws QueueUnderflowException{
+
+     if(isEmpty())                               // Check if queue is empty and fail accordingly
+     {
+         throws new QueueUnderflowException();
+     }
+
+     T data = elements[headIndex];              // Head index points to the the first element, store that
+                                                // value to return
+
+     if(headIndex == tailIndex)
+     {
+        headIndex = SPECIAL_EMPTY_VALUE;        // If the head index is the same as the tail index, then we've just
+                                                // dequeued the very last element. Hence mark head index with
+     }else                                      // SPECIAL_EMPTY_VALUE
+     {
+         headIndex = (headIndex + 1) % elements.length;
+     }                                          // Move the head to the next element - remember to wrap
+                                                // around to the beginning of the array for the last element
+     return data;
+}
+
+
+                                The QUEUE - PERFORMANCE AND COMPLEXITY
+
+enqueue(T data)    -     O(1) -> constant time
+dequeue()          -     O(1) -> constant time
+isEmpty()          -     O(1) -> constant time
+isFull()           -     O(1) -> constant time
+
+Space Complexity is O(N)
